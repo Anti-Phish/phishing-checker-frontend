@@ -13,6 +13,8 @@ code {
 }
 
 .lbl {
+  margin-top: 20px;
+  color: aliceblue;
   font-size: 40px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -32,6 +34,4 @@ code {
 .App-logo {
   float: right;
 }
-
-
 
