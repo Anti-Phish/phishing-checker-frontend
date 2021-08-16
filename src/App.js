@@ -1,11 +1,7 @@
 import Logo from './assets/logo.png';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
-import Solong from './assets/solo.png';
-
+import { BrowserRouter as Router} from 'react-router-dom';
 import Home from './components/Home';
-import { right } from '@popperjs/core';
 
 
 function App() {
@@ -15,7 +11,7 @@ function App() {
         <img src={Logo} className="rounded mx-auto d-block" style={{ height: 150 }} alt="logo" id="img1" />
         {/* <img src={Solong} className="rounded float-right" alt="solong" id="img2"/> */}
 
-        <Home></Home>
+        <Home/>
 
         
       </div>
