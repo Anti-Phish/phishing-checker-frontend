@@ -53,15 +53,15 @@ class Home extends Component {
           break;
           case "2" :
             this.setState({
-              threat_value: 750
+              threat_value: 625
           })
           break;
           case "3" :
             this.setState({
-              threat_value: 250
+              threat_value: 375
           })
           break;
-          default :
+          case "4" :
           this.setState({
             threat_value: 0
         })
@@ -71,12 +71,7 @@ class Home extends Component {
       .catch((error) => {
         console.log(error.response);
       });
-
-    // this.setState({
-    //     threat_value: 0
-    // })
-    console.log(typeof(this.state.threat_level));  
-
+    console.log(typeof(this.state.threat_level));
   }
 
   render() {
@@ -112,8 +107,8 @@ class Home extends Component {
           needleHeightRatio={0.7}
           // onChange={this.onChangeThreatValue}
           value={this.state.threat_value}
-          customSegmentStops={[0, 250, 750, 1000]}
-          segmentColors={["#43aa8b", "#f8961e", "#f94144"]}
+          customSegmentStops={[0, 250, 500,750, 1000]}
+          segmentColors={["#43aa8b", "#ffb703" ,"#f8961e", "#f94144"]}
           currentValueText="Threat Level"
           customSegmentLabels={[
             {
@@ -122,12 +117,17 @@ class Home extends Component {
               color: "#ffffff",
             },
             {
-              text: "Ok",
+              text: "OK",
+              position: "OUTSIDE",
+              color: "#ffffff"
+            },
+            {
+              text: "Unsafe",
               position: "OUTSIDE",
               color: "#ffffff",
             },
             {
-              text: "Unsafe",
+              text: "Dangerous",
               position: "OUTSIDE",
               color: "#ffffff",
             },
