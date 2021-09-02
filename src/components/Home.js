@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import {toast, ToastContainer} from "react-toastify";
 import ReactSpeedometer from "react-d3-speedometer";
+import Footer from "./Footer";
+
 
 class Home extends Component {
   constructor(props) {
@@ -31,10 +33,16 @@ class Home extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    let obj;
 
-    const obj = {
-      url: this.state.url,
-    };
+    if (this.state.url === ""){
+      toast.error("Invalid url")
+    }else {
+       obj = {
+        url: this.state.url,
+      };
+    }
+
 
     console.log(obj);
 
@@ -50,23 +58,29 @@ class Home extends Component {
             this.setState({
               threat_value: 1000
           })
+            toast.error("Dangerous")
           break;
           case "2" :
             this.setState({
               threat_value: 625
           })
+            toast("Unsafe")
           break;
           case "3" :
             this.setState({
               threat_value: 375
           })
+            toast.success("Ok")
           break;
           case "4" :
           this.setState({
             threat_value: 0
         })
+            toast.success("Safe")
         }
-        console.log(this.state.threat_level);
+
+        console.log(this.state.threat_value);
+        // toast.success(this.state.threat_value)
       })
       .catch((error) => {
         console.log(error.response);
@@ -75,8 +89,14 @@ class Home extends Component {
   }
 
   render() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
     return (
-      <div style={{ marginTop: 10 }}>
+        // marginTop: 10 ,
+    <div>
+
+      <div style={{ marginLeft:"10%",marginRight:"10%"}}>
+        <ToastContainer />
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label className="lbl">Paste the URL to be scan</label>
@@ -86,7 +106,7 @@ class Home extends Component {
               placeholder="Paste the URL to be scan"
               value={this.state.url}
               onChange={this.onChangeUrl}
-              required
+              // required
             />
           </div>
           <br />
@@ -95,7 +115,7 @@ class Home extends Component {
               <input
                 type="submit"
                 value="Scan URL"
-                className="btn btn-primary"
+                className="btn btn-primary scan_btn"
               />
             </center>
           </div>
@@ -132,14 +152,18 @@ class Home extends Component {
               color: "#ffffff",
             },
           ]}
-          ringWidth={47}
-          needleTransitionDuration={3333}
+          // ringWidth={47}
+          ringWidth={90}
+          // needleTransitionDuration={3333}
+          needleTransitionDuration={8500}
           needleTransition="easeElastic"
           needleColor={"#fefae0"}
           textColor={"#d8dee9"}
         />
         </center>
-        
+
+        </div>
+        <Footer />
       </div>
     );
   }
