@@ -1,15 +1,10 @@
 import Logo from './assets/logo.png';
-import './App.css';
+import './styls/App.css';
 import { BrowserRouter as Router,Route} from 'react-router-dom';
 import Home from './components/Home';
 import Feedback from './components/Feedback';
 import React from "react";
 import Switch from "react-bootstrap/Switch";
-import axios from "axios";
-
-
-
-setInterval(HealthCheck, 60000)
 
 function App() {
 
@@ -24,12 +19,6 @@ function App() {
       </div>
      </Router>
   );
-}
-
-function HealthCheck () {
-    axios.get("https://anti-phish-frontend.herokuapp.com/").then((response) => {
-        console.log("Health ok")
-    })
 }
 
 export default App;
