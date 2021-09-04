@@ -15,7 +15,7 @@ class Home extends Component {
       url: "",
       description: "",
       threat_level: "",
-      threat_value: 1000,
+      threat_value: 500,
     };
   }
 
@@ -58,29 +58,27 @@ class Home extends Component {
             this.setState({
               threat_value: 1000
           })
-            toast.error("Dangerous")
-          break;
+            break;
           case "2" :
             this.setState({
               threat_value: 625
           })
-            toast("Unsafe")
-          break;
+            break;
           case "3" :
             this.setState({
               threat_value: 375
           })
-            toast.success("Ok")
-          break;
+            break;
           case "4" :
           this.setState({
             threat_value: 0
         })
-            toast.success("Safe")
+            break;
+          default:
+            toast.error("Invalid URL")
+            break;
         }
-
         console.log(this.state.threat_value);
-        // toast.success(this.state.threat_value)
       })
       .catch((error) => {
         console.log(error.response);
@@ -89,12 +87,8 @@ class Home extends Component {
   }
 
   render() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
     return (
-        // marginTop: 10 ,
     <div>
-
       <div style={{ marginLeft:"10%",marginRight:"10%"}}>
         <ToastContainer />
         <form onSubmit={this.onSubmit}>
@@ -152,16 +146,12 @@ class Home extends Component {
               color: "#ffffff",
             },
           ]}
-          // ringWidth={47}
           ringWidth={90}
-          // needleTransitionDuration={3333}
-          needleTransitionDuration={8500}
-          needleTransition="easeElastic"
+          needleTransitionDuration={1000}
           needleColor={"#fefae0"}
           textColor={"#d8dee9"}
         />
         </center>
-
         </div>
         <Footer />
       </div>
