@@ -1,15 +1,13 @@
 import React from "react"
-import {toast, ToastContainer} from "react-toastify";
+import {ToastContainer} from "react-toastify";
 import Logo from "../assets/logo.png";
-import {Link,useHistory} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 function Footer(){
 
     const footerBackground={
-        // backgroundColor:"#1d3542",
         backgroundColor:"#001c26",
         marginBottom:"-8px",
-        // borderTop:"white solid 1px"
     }
     const middleContent={
         marginLeft:"40%",
