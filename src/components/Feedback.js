@@ -1,17 +1,32 @@
 import React from "react";
-import Styles from "../styls/feedback.module.css"
 import Footer from "./Footer";
+import {Button, Form,} from "react-bootstrap";
+import axios from "axios";
+
 
 function Feedback() {
+
+    const request = {
+        email:"",
+        name:"",
+        subject:"",
+        comment:""
+    }
+
+    function onSubmit(object){
+        console.log(request)
+        axios.post("https://anti-phishing.herokuapp.com/feedback", request).then(r => {
+            console.log(r)
+        })
+    }
+
     const formBackground={
-        // backgroundColor:"#1d3542",
         backgroundColor:"#43aa8b",
         marginLeft:"30%",
         marginRight:"30%",
         width:"40%",
         height:"450px",
         marginBottom:"-8px",
-        // border:"solid 2px white"
     }
     const formContainer={
         paddingTop:"10%",
@@ -19,37 +34,57 @@ function Feedback() {
         marginRight:"20%",
         height:"500px",
         color:"white",
+    }
 
-        // backgroundColor:"#ededee",
-    }
-    const fromNameField={
-        float:"left",
-        paddingLeft:"50px",
-        marginBottom:"10px"
-    }
-    const inputTextField ={
-        paddingLeft:"50px",
-        // float:"right"
-    }
+
     return(
         <div>
             <div style={formBackground}>
-                <center>
                     <div style={formContainer}>
-                        <h3>Feedback us</h3>
-                        <form style={{paddingTop:"40px",paddingBottom:"40px"}}>
-                               <span style={fromNameField }>Name    <span style={{paddingLeft:"55px"}}><input   type="text"/> </span></span> <br/>
-                                <span style={fromNameField}>Email   <span style={{paddingLeft:"60px"}}><input  type="text"/> </span></span><br/>
-                                <span style={fromNameField}>Comment </span><span style={{paddingLeft:"-50px"}}><textarea style={{minHeight:"150px",maxHeight:"150px",minWidth:"120px",maxWidth:"200px"}}  /></span><br/><br/>
-                                <button  className="btn btn-primary scan_btn"  type="submit" >Submitted </button>
-                        </form>
-                    </div>
-                </center>
+                        <Form onSubmit={onSubmit}>
 
+                            <Form.Group className="mb-3">
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control type="text" placeholder="Name" onChange={event => {
+                                    request.name = event.target.value;
+                                }}/>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control type="email" placeholder="Enter email" onChange={event => {
+                                    request.email = event.target.value;
+                                }} />
+                                <Form.Text className="text-muted">
+                                </Form.Text>
+                            </Form.Group>
+
+                            <Form.Label>Subject</Form.Label>
+                            <Form.Select aria-label="Floating label select example" onChange={event => {
+                                request.subject = event.target.value;
+                            }}>
+                                <option>Select subject</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </Form.Select>
+
+                            <Form.Label>Comment</Form.Label>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                <Form.Control as="textarea" rows={3} onChange={event => {
+                                    request.comment = event.target.value;
+                                }} />
+                            </Form.Group>
+
+                            <Button variant="primary" type="submit">
+                                Submit
+                            </Button>
+                        </Form>
+                    </div>
             </div>
-                <div>
-                    <Footer />
-                </div>
+            <div>
+                <Footer />
+            </div>
         </div>
     )
 }
