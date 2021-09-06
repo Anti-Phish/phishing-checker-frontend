@@ -14,6 +14,7 @@ function Feedback() {
     }
 
     function onSubmit(object){
+        object.preventDefault()
         console.log(request)
         axios.post("https://anti-phishing.herokuapp.com/feedback", request).then(r => {
             console.log(r)
