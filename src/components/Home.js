@@ -16,9 +16,12 @@ class Home extends Component {
       description: "",
       threat_level: "",
       threat_value: 500,
+      width_k:window.innerWidth*0.35,
+      height_k:window.innerHeight*0.35,
+      ratio:window.innerWidth/window.innerHeight
+
     };
   }
-
   onChangeUrl(e) {
     this.setState({
       url: e.target.value,
@@ -88,8 +91,8 @@ class Home extends Component {
 
   render() {
     return (
-    <div>
-      <div style={{ marginLeft:"10%",marginRight:"10%"}}>
+      // <div style={{ marginLeft:"10%",marginRight:"10%"}}>
+      <div style={{ marginLeft:`${window.innerWidth*0.4}`,marginRight:`${window.innerWidth*0.4}`}}>
         <ToastContainer />
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
@@ -116,45 +119,52 @@ class Home extends Component {
         </form>
         <center>
           <h1 className="lbl" >Threat Level </h1>
-          <ReactSpeedometer
-          width={500}
-          needleHeightRatio={0.7}
-          // onChange={this.onChangeThreatValue}
-          value={this.state.threat_value}
-          customSegmentStops={[0, 250, 500,750, 1000]}
-          segmentColors={["#43aa8b", "#ffb703" ,"#f8961e", "#f94144"]}
-          currentValueText="Threat Level"
-          customSegmentLabels={[
-            {
-              text: "Safe",
-              position: "OUTSIDE",
-              color: "#ffffff",
-            },
-            {
-              text: "OK",
-              position: "OUTSIDE",
-              color: "#ffffff"
-            },
-            {
-              text: "Unsafe",
-              position: "OUTSIDE",
-              color: "#ffffff",
-            },
-            {
-              text: "Dangerous",
-              position: "OUTSIDE",
-              color: "#ffffff",
-            },
-          ]}
-          ringWidth={90}
-          needleTransitionDuration={1000}
-          needleColor={"#fefae0"}
-          textColor={"#d8dee9"}
-        />
+
+
+              <ReactSpeedometer
+
+              width={this.state.width_k > 360 ? 500 : 300}
+              height= {this.state.height_k > 590 ? 500 : 300}
+
+              needleHeightRatio={0.7}
+              value={this.state.threat_value}
+              customSegmentStops={[0, 250, 500,750, 1000]}
+              segmentColors={["#43aa8b", "#ffb703" ,"#f8961e", "#f94144"]}
+              currentValueText="Threat Level"
+              customSegmentLabels={[
+                {
+                  text: "Safe",
+                  position: "OUTSIDE",
+                  color: "#ffffff",
+
+                },
+                {
+                  text: "OK",
+                  position: "OUTSIDE",
+                  color: "#ffffff"
+                },
+                {
+                  text: "Unsafe",
+                  position: "OUTSIDE",
+                  color: "#ffffff",
+                  // fontSize:"8px"
+                },
+                {
+                  text: "Dangerous",
+                  position: "OUTSIDE",
+                  color: "#ffffff",
+                  // fontSize:"8px"
+                },
+              ]}
+              ringWidth={(this.state.width_k >360)? 90: 60}
+              // ringWidth={90}
+              needleTransitionDuration={1000}
+              needleColor={"#fefae0"}
+              textColor={"#d8dee9"}
+            />
+
         </center>
         </div>
-        <Footer />
-      </div>
     );
   }
 }

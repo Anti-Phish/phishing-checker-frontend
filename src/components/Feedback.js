@@ -6,6 +6,8 @@ import axios from "axios";
 
 function Feedback() {
 
+    const width =window.innerWidth;
+    const height =window.innerHeight;
     const request = {
         email:"",
         name:"",
@@ -26,14 +28,15 @@ function Feedback() {
         marginLeft:"30%",
         marginRight:"30%",
         width:"40%",
-        height:"450px",
+        height:"50%",
         marginBottom:"-8px",
     }
     const formContainer={
         paddingTop:"10%",
         marginLeft:"20%",
         marginRight:"20%",
-        height:"500px",
+        marginBottom: "20%",
+        // height:"450px",
         color:"white",
     }
 
@@ -42,6 +45,7 @@ function Feedback() {
         <div>
             <div style={formBackground}>
                     <div style={formContainer}>
+                    {/*<div >*/}
                         <Form onSubmit={onSubmit}>
 
                             <Form.Group className="mb-3">
@@ -83,9 +87,9 @@ function Feedback() {
                         </Form>
                     </div>
             </div>
-            <div>
-                <Footer />
-            </div>
+            {/*<div>*/}
+            {/*    <Footer />*/}
+            {/*</div>*/}
         </div>
     )
 }
