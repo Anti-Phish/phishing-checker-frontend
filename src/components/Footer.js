@@ -22,10 +22,16 @@ function Footer(){
         <div style={footerBackground}>
             <div style={middleContent}>
                 <center>
-
                     <h3 style={{color:"#ffb703",marginTop:"10%",paddingTop:"10px"}}>KNOWB4 <span style={{color:"#f94144"}}>Anti-Phishing</span></h3>
-                    <h3 style={{color:"#fcfcfc",paddingBottom:"10px",fontSize:"16px"}}> <Link to='/'>Home</Link> | <Link to='/feedback'>Contact us</Link> | <Link to='/about'>About us</Link> </h3>
-                    <img src={Logo} className="rounded mx-auto d-block" style={{ height: 100 ,paddingBottom:"10px"}} alt="logo" id="img1" />
+                    <h3 style={{color:"#fcfcfc",paddingBottom:"10px",fontSize:"16px"}}>
+                        <Link to='/'>Home</Link> |
+                        <Link to='/feedback'>Contact us</Link>
+                        {/*|*/}
+                        {/*<Link to='/about'>About us</Link> */}
+                    </h3>
+                    <Link to='/'>
+                        <img src={Logo} className="rounded mx-auto d-block" style={{ height: 100 ,paddingBottom:"10px"}} alt="logo" id="img1" />
+                    </Link>
                 </center>
 
             </div>

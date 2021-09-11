@@ -38,13 +38,14 @@ class Home extends Component {
     e.preventDefault();
     let obj;
 
-    if (this.state.url === ""){
-      toast.error("Invalid url")
-    }else {
+    // if (this.state.url === ""){
+    //   toast.error("Invalid url")
+    // }else {
        obj = {
         url: this.state.url,
       };
-    }
+    // }
+
 
 
     console.log(obj);
@@ -103,7 +104,7 @@ class Home extends Component {
               placeholder="Paste the URL to be scan"
               value={this.state.url}
               onChange={this.onChangeUrl}
-              // required
+              required
             />
           </div>
           <br />

@@ -25,11 +25,13 @@ function Feedback() {
 
     const formBackground={
         backgroundColor:"#43aa8b",
-        marginLeft:"30%",
-        marginRight:"30%",
-        width:"40%",
-        height:"50%",
+        // marginLeft:"30%",
+        // marginRight:"30%",
+        // width:"40%",
+        // height:"50%",
         marginBottom:"-8px",
+        marginLeft:`${width >= 1024 ? 30 : 10}%`,
+        marginRight:`${width >= 1024 ? 30 : 10}%`,
     }
     const formContainer={
         paddingTop:"10%",
@@ -37,6 +39,7 @@ function Feedback() {
         marginRight:"20%",
         marginBottom: "20%",
         // height:"450px",
+        height:`${height*0.79}px`,
         color:"white",
     }
 
