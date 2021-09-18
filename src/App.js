@@ -1,3 +1,4 @@
+
 import Logo from './assets/mainLogo.png';
 import { BrowserRouter as Router,Route} from 'react-router-dom';
 import Home from './components/Home';
@@ -16,8 +17,7 @@ function App() {
             <Route path="/" exact component={Home}/>
             <Route path="/feedback" component={Feedback}/>
             <Route path="/about" component={AboutUs}/>
-
-          <Footer />
+            <Footer />
       </div>
      </Router>
   );

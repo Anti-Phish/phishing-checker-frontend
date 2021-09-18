@@ -28,6 +28,8 @@ function Feedback() {
         marginRight:`${width > 770 ? 30 : 10}%`,
         boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
         marginBottom:"-8px",
+        marginLeft:`${width >= 1024 ? 30 : 10}%`,
+        marginRight:`${width >= 1024 ? 30 : 10}%`,
     }
     const formContainer={
         paddingTop:"10%",

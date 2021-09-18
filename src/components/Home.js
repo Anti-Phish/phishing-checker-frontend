@@ -37,13 +37,14 @@ class Home extends Component {
     e.preventDefault();
     let obj;
 
-    if (this.state.url === ""){
-      toast.error("Invalid url")
-    }else {
+    // if (this.state.url === ""){
+    //   toast.error("Invalid url")
+    // }else {
        obj = {
         url: this.state.url,
       };
-    }
+    // }
+
 
 
     console.log(obj);
@@ -96,6 +97,7 @@ class Home extends Component {
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
 
+
             <div style={{marginLeft:"10%",marginRight:"10%"}}>
 
               <center>
@@ -110,6 +112,7 @@ class Home extends Component {
                   onChange={this.onChangeUrl}
                   // required
                 />
+
           </div>
           <br />
 
