@@ -1,88 +1,166 @@
-import React, { Component } from 'react';
-import Symbol from '../assets/symbol.png';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
+import {toast, ToastContainer} from "react-toastify";
+import ReactSpeedometer from "react-d3-speedometer";
+
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.onChangeUrl = this.onChangeUrl.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
 
-    constructor(props) {
-        super(props);
-        this.onChangeUrl = this.onChangeUrl.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+    this.state = {
+      url: "",
+      description: "",
+      threat_level: "",
+      threat_value: 500,
+      width:window.innerWidth*0.35,
+      height:window.innerHeight*0.35,
+      ratio:window.innerWidth/window.innerHeight
 
-        this.state = {
-            url: '',
-            title: '',
-            description: '',
-            threat_level: ''
-        }
-    }
+    };
+  }
+  onChangeUrl(e) {
+    this.setState({
+      url: e.target.value,
+    });
+  }
 
-    onChangeUrl(e) {
-        this.setState({
-            url: e.target.value
+  onChangeThreatValue(e) {
+    this.setState({
+      threat_value: e.target.value,
+    });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    let obj = {
+      url: this.state.url,
+    };
+
+    console.log(obj);
+    axios
+        .post("https://mr-detective-backend-api.herokuapp.com/check", obj)
+        .then((response) => {
+          this.setState({
+            description: "description : " + response.data.description,
+            threat_level: response.data.threat_level,
+          });
+          switch(this.state.threat_level) {
+            case "1" :
+              this.setState({
+                threat_value: 1000
+              })
+              break;
+            case "2" :
+              this.setState({
+                threat_value: 625
+              })
+              break;
+            case "3" :
+              this.setState({
+                threat_value: 375
+              })
+              break;
+            case "4" :
+              this.setState({
+                threat_value: 0
+              })
+              break;
+            default:
+              toast.error("Invalid URL")
+              break;
+          }
+          console.log(this.state.threat_value);
+        })
+        .catch((error) => {
+          console.log(error.response);
         });
-    }
+    console.log(typeof(this.state.threat_level));
+  }
 
-    onSubmit(e) {
-        e.preventDefault();
+  render() {
+    return (
 
-        const obj = {
-            url: this.state.url
-        };
+        <div style={{ marginLeft:`${window.innerWidth*0.4}`,marginRight:`${window.innerWidth*0.4}`}}>
+          <ToastContainer />
+          <form onSubmit={this.onSubmit}>
+            <div className="form-group">
 
-        console.log(obj)
+              <div style={{marginLeft:"10%",marginRight:"10%"}}>
+                <center>
+                  <label className="lbl" style={{fontSize: `${this.state.width > 360 ? 40 : 25}px`}}>Paste the URL to scan</label>
+                </center>
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Paste the URL to scan"
+                    value={this.state.url}
+                    onChange={this.onChangeUrl}
+                    required
+                />
 
-        // this.setState({
-        //     url: '',
-        //     title: 'Result',
-        //     description: 'done 2'
-        // })
-
-        axios.post('https://anti-phishing.herokuapp.com/check', obj)
-            .then(
-                response => {
-                    this.setState({
-                        description: 'description : ' +response.data.description,
-                        title: 'Result',
-                        threat_level: 'threat_level : ' + response.data.threat_level
-                    })
-                    console.log(response);
-                }
-            )
-            .catch(error => {
-                console.log(error.response)
-            });
-    }
-
-    render() {
-        return (
-            <div style={{ marginTop: 10 }}>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label className="lbl">Paste the URL to be scan</label>
-                        <input type="text" className="form-control" placeholder="paste" value={this.state.url} onChange={this.onChangeUrl} />
-                    </div>
-                    <br />
-                    <div className="form-group">
-                        <center>
-                        <input type="submit" value="Scan URL" className="btn btn-primary" />
-                        </center>
-                        
-                    </div>
-
-                </form>
-                <img src={Symbol} className="App-logo" alt="solong" />
-                <br></br>
-                <h1 className=" lbl text-*-center"> {this.state.title} </h1>
-                <p className = "para">
-                    {this.state.description}
-                    <br />
-                    <span className="level"> {this.state.threat_level} </span>
-                </p>
-
+              </div>
+              <br />
+              <div className="form-group">
+                <center>
+                  <input
+                      type="submit"
+                      value="Scan URL"
+                      className="btn btn-primary scan_btn"
+                  />
+                </center>
+              </div>
             </div>
-        );
-    }
+          </form>
+          <center>
+            <h1 className="lbl" style={{marginTop:`${this.state.width > 360 ? 30 : 50}px` }} >Threat Level </h1>
+
+
+            <ReactSpeedometer
+
+                width={this.state.width > 360 ? 500 : 300}
+                height= {this.state.height > 590 ? 500 : 300}
+
+                needleHeightRatio={0.7}
+                value={this.state.threat_value}
+                customSegmentStops={[0, 250, 500,750, 1000]}
+                segmentColors={["#43aa8b", "#f1ba55" ,"#f69316", "#f94144"]}
+                currentValueText="Threat Level"
+                customSegmentLabels={[
+                  {
+                    text: "Safe",
+                    position: "OUTSIDE",
+                    color: "#000000",
+
+                  },
+                  {
+                    text: "OK",
+                    position: "OUTSIDE",
+                    color: "#000000"
+                  },
+                  {
+                    text: "Unsafe",
+                    position: "OUTSIDE",
+                    color: "#000000",
+                  },
+                  {
+                    text: "Dangerous",
+                    position: "OUTSIDE",
+                    color: "#000000",
+                  },
+                ]}
+                ringWidth={(this.state.width >360)? 90: 60}
+                needleTransitionDuration={1000}
+                needleColor={"#000000"}
+                textColor={"#000000"}
+            />
+
+          </center>
+        </div>
+    );
+  }
 }
 
 export default Home;

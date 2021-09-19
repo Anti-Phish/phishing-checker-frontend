@@ -1,24 +1,28 @@
-import Logo from './logo.png';
-import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
-import Solong from './assets/solo.png';
-
+import Logo from './assets/mainLogo.png';
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import Home from './components/Home';
-import { right } from '@popperjs/core';
+import Feedback from './components/Feedback';
+import Footer from './components/Footer';
+import React from "react";
+import AboutUs from "./components/AboutUs";
+import Disclaimer from "./components/Disclaimer";
 
 function App() {
-  return (
-    <Router>
-      <div className="container">
-        <img src={Logo} className="rounded mx-auto d-block" style={{ height: 160 }} alt="logo" />
-        <img src={Solong} className="rounded mx-auto d-block" alt="solong" />
-        <br />
 
-        <Home></Home>
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <div style={{marginBottom:"0px"}}>
+                <Link to="/">
+                    <img src={Logo} className="rounded mx-auto d-block" style={{ height: 150 }} alt="logo" id="img1" />
+                </Link>
+                <Route path="/" exact component={Home}/>
+                <Route path="/feedback" component={Feedback}/>
+                <Route path="/about" component={AboutUs}/>
+                <Route path="/disclaimer" component={Disclaimer}/>
+                <Footer />
+            </div>
+        </Router>
+    );
 }
 
 export default App;

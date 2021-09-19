@@ -13,8 +13,11 @@ code {
 }
 
 .lbl {
-  font-size: 40px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #000000;
+  font-family: Segoe UI,SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: lighter;
 }
 
 .level {
@@ -33,5 +36,9 @@ code {
   float: right;
 }
 
-
-
+.feedbackFormName
+{
+  color: black;
+  font-family: Segoe UI,SegoeUI,\"Helvetica Neue\",Helvetica,Arial,sans-serif;
+  font-weight: lighter;
+}
