@@ -35,12 +35,10 @@ code {
 .App-logo {
   float: right;
 }
-/*feedback form name*/
+
 .feedbackFormName
 {
-  /*font-size: 40px;*/
   color: black;
   font-family: Segoe UI,SegoeUI,\"Helvetica Neue\",Helvetica,Arial,sans-serif;
   font-weight: lighter;
 }
-/*style={{color:"black",fontFamily:"Segoe UI,SegoeUI,\"Helvetica Neue\",Helvetica,Arial,sans-serif",fontWeight:"lighter"}}*/
