@@ -41,7 +41,7 @@ class Home extends Component {
 
     console.log(obj);
     axios
-        .post("https://anti-phishing.herokuapp.com/check", obj)
+        .post("https://mr-detective-backend-api.herokuapp.com/check", obj)
         .then((response) => {
           this.setState({
             description: "description : " + response.data.description,
