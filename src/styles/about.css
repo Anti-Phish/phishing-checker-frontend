@@ -1,6 +1,5 @@
 /******About*********/
 .blog-card__title {
-    /*font-family: 'Quantico';*/
     font-family: Segoe UI,SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: lighter;
     font-size: 36px;
@@ -11,18 +10,13 @@
     text-align: center;
 }
 .AboutDes{
-    padding-top: 0px;
-    /*font-family: 'Open Sans';*/
-    /*font-size: 20px;*/
-    /*color:#909090;*/
+    padding-top: 0;
     text-align:justify;
 
 }
 
 .Aboutbox{
-    /*padding: AUTO;*/
     margin: auto;
-    color: rgb(102, 96, 96);
     text-align: center;
     color: #000000;
 }
@@ -34,7 +28,6 @@
 
 .bb{
     margin: auto;
-    /*color: rgb(2, 2, 2);*/
     text-align: center;
     color: #000000;
 }
@@ -66,10 +59,7 @@
 .column1 {
     float: left;
     width: 33.333%;
-    /*padding:0 10px 0 10px;*/
-    /*padding: 50px;*/
-    padding: 0px;
-    /*margin-bottom: -5%;*/
+    padding: 0;
 }
 
 .column1 img {
@@ -84,20 +74,18 @@
 .column1 img:hover {
     opacity: 1;
     box-shadow: 8px 8px 8px #252323;
-    /*width: 100%;*/
 }
 
 .lblName
 {
     margin-top: 2%;
     margin-left: 20%;
-    font-family: 'Freestyle Script';
+    font-family: 'Freestyle Script', serif;
 
 }
 .socialMediaButton
 {
     margin-left: 20%;
-    /*font-size: 40px;*/
 
 }
 .gitHub
@@ -113,7 +101,6 @@
 }
 .linkedIn
 {
-    /*color: #0270ff;*/
     color: black;
     transition: color 1s;
 }

@@ -28,8 +28,8 @@ function Feedback() {
         marginRight:`${width > 770 ? 30 : 10}%`,
         boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
         marginBottom:"-8px",
-        marginLeft:`${width >= 1024 ? 30 : 10}%`,
-        marginRight:`${width >= 1024 ? 30 : 10}%`,
+        // marginLeft:`${width >= 1024 ? 30 : 10}%`,
+        // marginRight:`${width >= 1024 ? 30 : 10}%`,
     }
     const formContainer={
         paddingTop:"10%",
@@ -45,15 +45,10 @@ function Feedback() {
         <div>
             <div style={formBackground}>
                     <div style={formContainer}>
-
                         <Form onSubmit={onSubmit}>
-
-                            {/*<div className="feedbackFormName" style={{color:"black",fontFamily:"Segoe UI,SegoeUI,\"Helvetica Neue\",Helvetica,Arial,sans-serif",fontWeight:"lighter"}}>*/}
-                            {/*<div className="feedbackFormName" >*/}
                                 <center>
                                     <span className="feedbackFormName" style={{fontSize:`${width > 770 ? 40 : 30}px`}}>Contact Form</span>
                                 </center>
-                            {/*</div>*/}
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Name </Form.Label>
@@ -92,8 +87,6 @@ function Feedback() {
                                 <Button variant="primary" type="submit" >
                                     Submit
                                 </Button>
-
-
                         </Form>
                     </div>
             </div>

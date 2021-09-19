@@ -1,5 +1,4 @@
-import React, {Component, useState} from 'react';
-import Logo from '../assets/logo.png';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Mem1 from '../assets/member-1.jpg';
 import Mem2 from '../assets/member-2.jpg';
@@ -9,14 +8,6 @@ import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 function About () {
 
         let width =window.innerWidth
-        let height = window.innerHeight
-
-    //     const [size,setSize]=useState("10px");
-    // // 360 ? 500 : 300}
-    // const fontSize=()=>{
-    //
-    //     return
-    // }
 
         return (
         <div className="bodyContent">
@@ -39,8 +30,7 @@ function About () {
                     <div className="column1">
 
                         <img src={Mem3} alt="Member-1"  />
-                        {/*<div className="status">Developer</div>*/}
-                        <p className="lblName" style={{fontSize:`${width>590 ? 40 : 20}px`}}>Wikum Weerakutti</p>
+                        <p className="lblName" style={{fontSize:`${width>590 ? 40 : 15}px`}}>Wikum Weerakutti</p>
 
                         <div className="socialMediaButton" style={{fontSize:`${width>590 ? 40 : 20}px` ,marginTop:`${width>590 ? 5 : -20}%`}} >
                             <a className="gitHub" href="https://github.com/wikumChamith"><FontAwesomeIcon  icon={faGithub} /></a>
@@ -50,8 +40,7 @@ function About () {
                     </div>
                     <div className="column1">
                         <img src={Mem2} alt="Member-2" />
-                        {/*<div className="status">Developer</div>*/}
-                        <p className="lblName" style={{fontSize:`${width>590 ? 40 : 20}px`}}>Kavishka Ganewattha</p>
+                        <p className="lblName" style={{fontSize:`${width>590 ? 40 : 15}px`}}>Kavishka Ganewattha</p>
 
                         <div className="socialMediaButton" style={{fontSize:`${width>590 ? 40 : 20}px`,marginTop:`${width>590 ? 5 : -20}%`}} >
                             <a className="gitHub" href="https://github.com/KaViShKa99"><FontAwesomeIcon  icon={faGithub} /></a>
@@ -61,8 +50,7 @@ function About () {
                     </div>
                     <div className="column1">
                         <img src={Mem1} alt="Member-3" />
-                        {/*<div className="status">Developer</div>*/}
-                        <p className="lblName" style={{fontSize:`${width>590 ? 40 : 20}px`} }>Shaumya Alexandra</p>
+                        <p className="lblName" style={{fontSize:`${width>590 ? 40 : 15}px`} }>Shaumya Alexandra</p>
 
                         <div className="socialMediaButton"  style={{fontSize:`${width>590 ? 40 : 20}px`,marginTop:`${width>590 ? 5 : -20}%` }}>
                             <a className="gitHub" href="https://github.com/Shaumya-A"><FontAwesomeIcon  icon={faGithub} /></a>
@@ -70,15 +58,6 @@ function About () {
                         </div>
                     </div>
                 </div>
-
-                <div className=" Aboutbox">
-                    <div className="home">
-                        <br/>
-                        <h1 className="CHeading">FIND US ON</h1>
-                        <p id="Clbl">Contact us via (+94) 72 xxxx 845</p>
-                    </div>
-                </div>
-
             </div>
     )
 }
