@@ -1,11 +1,12 @@
 import React from "react";
-import Footer from "./Footer";
 import {Button, Form,} from "react-bootstrap";
 import axios from "axios";
 
 
 function Feedback() {
 
+    const width =window.innerWidth;
+    const height =window.innerHeight;
     const request = {
         email:"",
         name:"",
@@ -22,18 +23,20 @@ function Feedback() {
     }
 
     const formBackground={
-        backgroundColor:"#43aa8b",
-        marginLeft:"30%",
-        marginRight:"30%",
-        width:"40%",
-        height:"450px",
+        backgroundColor:"#ffffff",
+        marginLeft:`${width > 770 ? 30 : 10}%`,
+        marginRight:`${width > 770 ? 30 : 10}%`,
+        boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
         marginBottom:"-8px",
+        marginLeft:`${width >= 1024 ? 30 : 10}%`,
+        marginRight:`${width >= 1024 ? 30 : 10}%`,
     }
     const formContainer={
         paddingTop:"10%",
         marginLeft:"20%",
         marginRight:"20%",
-        height:"500px",
+        marginBottom: "20%",
+        height:`${height > 600 ? height*0.79 : 550}px`,
         color:"white",
     }
 
@@ -42,18 +45,26 @@ function Feedback() {
         <div>
             <div style={formBackground}>
                     <div style={formContainer}>
+
                         <Form onSubmit={onSubmit}>
 
+                            {/*<div className="feedbackFormName" style={{color:"black",fontFamily:"Segoe UI,SegoeUI,\"Helvetica Neue\",Helvetica,Arial,sans-serif",fontWeight:"lighter"}}>*/}
+                            {/*<div className="feedbackFormName" >*/}
+                                <center>
+                                    <span className="feedbackFormName" style={{fontSize:`${width > 770 ? 40 : 30}px`}}>Contact Form</span>
+                                </center>
+                            {/*</div>*/}
+
                             <Form.Group className="mb-3">
-                                <Form.Label>Name</Form.Label>
+                                <Form.Label>Name </Form.Label>
                                 <Form.Control type="text" placeholder="Name" onChange={event => {
                                     request.name = event.target.value;
                                 }}/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" onChange={event => {
+                                <Form.Label>Email address </Form.Label>
+                                <Form.Control type="email" placeholder="Email" onChange={event => {
                                     request.email = event.target.value;
                                 }} />
                                 <Form.Text className="text-muted">
@@ -65,9 +76,10 @@ function Feedback() {
                                 request.subject = event.target.value;
                             }}>
                                 <option>Select subject</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="1">Whitelist your website</option>
+                                <option value="2">Report a phishing site</option>
+                                <option value="3">Feedbacks</option>
+                                <option value="3">Other</option>
                             </Form.Select>
 
                             <Form.Label>Comment</Form.Label>
@@ -77,14 +89,13 @@ function Feedback() {
                                 }} />
                             </Form.Group>
 
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
+                                <Button variant="primary" type="submit" >
+                                    Submit
+                                </Button>
+
+
                         </Form>
                     </div>
-            </div>
-            <div>
-                <Footer />
             </div>
         </div>
     )
