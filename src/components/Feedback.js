@@ -4,7 +4,6 @@ import axios from "axios";
 
 
 function Feedback() {
-
     const width =window.innerWidth;
     const height =window.innerHeight;
     const request = {
@@ -17,7 +16,7 @@ function Feedback() {
     function onSubmit(object){
         object.preventDefault()
         console.log(request)
-        axios.post("https://anti-phishing.herokuapp.com/feedback", request).then(r => {
+        axios.post("https://mr-detective-backend-api.herokuapp.com/feedback", request).then(r => {
             console.log(r)
         })
     }
@@ -43,15 +42,10 @@ function Feedback() {
         <div>
             <div style={formBackground}>
                     <div style={formContainer}>
-
                         <Form onSubmit={onSubmit}>
-
-                            {/*<div className="feedbackFormName" style={{color:"black",fontFamily:"Segoe UI,SegoeUI,\"Helvetica Neue\",Helvetica,Arial,sans-serif",fontWeight:"lighter"}}>*/}
-                            {/*<div className="feedbackFormName" >*/}
                                 <center>
                                     <span className="feedbackFormName" style={{fontSize:`${width > 770 ? 40 : 30}px`}}>Contact Form</span>
                                 </center>
-                            {/*</div>*/}
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Name </Form.Label>
@@ -90,8 +84,6 @@ function Feedback() {
                                 <Button variant="primary" type="submit" >
                                     Submit
                                 </Button>
-
-
                         </Form>
                     </div>
             </div>
