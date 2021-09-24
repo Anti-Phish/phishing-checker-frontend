@@ -17,7 +17,6 @@ function Feedback() {
         object.preventDefault()
         console.log(request)
         axios.post("https://mr-detective-backend-api.herokuapp.com/feedback", request).then(r => {
-            console.log(r)
         })
     }
 
@@ -33,6 +32,7 @@ function Feedback() {
         marginLeft:"20%",
         marginRight:"20%",
         marginBottom: "20%",
+        marginTop: "10%",
         height:`${height > 600 ? height*0.79 : 550}px`,
         color:"white",
     }
@@ -44,7 +44,7 @@ function Feedback() {
                     <div style={formContainer}>
                         <Form onSubmit={onSubmit}>
                                 <center>
-                                    <span className="feedbackFormName" style={{fontSize:`${width > 770 ? 40 : 30}px`}}>Contact Form</span>
+                                    <span className="feedbackFormName" style={{fontSize:`${width > 770 ? 40 : 25}px`}}>Contact Form</span>
                                 </center>
 
                             <Form.Group className="mb-3">
@@ -67,10 +67,9 @@ function Feedback() {
                             <Form.Select aria-label="Floating label select example" onChange={event => {
                                 request.subject = event.target.value;
                             }}>
-                                <option>Select subject</option>
+                                <option value="3">Feedback</option>
                                 <option value="1">Whitelist your website</option>
                                 <option value="2">Report a phishing site</option>
-                                <option value="3">Feedbacks</option>
                                 <option value="3">Other</option>
                             </Form.Select>
 
