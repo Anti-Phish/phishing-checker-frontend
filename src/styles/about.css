@@ -92,7 +92,7 @@
 .gitHub
 {
     color: black;
-    margin-left: 15%;
+    margin-left: 18%;
     margin-right: 8%;
     transition: color 1s;
 }
@@ -102,7 +102,7 @@
 }
 .linkedIn
 {
-    color: black;
+    color: #0077b5;
     transition: color 1s;
 }
 .linkedIn:hover
