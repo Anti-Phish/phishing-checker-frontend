@@ -16,7 +16,7 @@ function Feedback() {
     function onSubmit(object){
         object.preventDefault()
         console.log(request)
-        axios.post("https://mr-detective-backend-api.herokuapp.com/feedback", request).then(r => {
+        axios.post("https://mr-detective-427306.uc.r.appspot/feedback", request).then(r => {
         })
     }
 
