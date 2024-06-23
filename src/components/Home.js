@@ -42,7 +42,7 @@ class Home extends Component {
 
 
     axios
-        .post("https://mr-detective-backend-api.herokuapp.com/check", obj)
+        .post("https://mr-detective-427306.uc.r.appspot.com/check", obj)
         .then((response) => {
           this.setState({
             description: "description : " + response.data.description,
